@@ -3,6 +3,15 @@
 <br>
 
 <div class="container">
+    <ul class="nav nav-pills">
+        <?php foreach ($menu as $item) : ?>
+            <li><a href="category/<?= $item->id ?>"><?= $item->title ?></a></li>
+        <?php endforeach; ?>
+
+<!--        <li role="presentation" class="active"><a href="#">Home</a></li>-->
+<!--        <li role="presentation"><a href="#">Profile</a></li>-->
+<!--        <li role="presentation"><a href="#">Messages</a></li>-->
+    </ul>
     <h1><?= $title ?></h1>
     <?php if (!empty($posts)) : ?>
         <ul>Таблица постов:</ul>

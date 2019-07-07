@@ -1,6 +1,7 @@
 {
     "require": {
-        "symfony/var-dumper": "^4.3"
+        "symfony/var-dumper": "^4.3",
+        "gabordemooij/redbean": "dev-master"
     },
     "autoload": {
         "psr-4": {

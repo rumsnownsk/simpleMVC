@@ -12,8 +12,12 @@ define('WWW', __DIR__);                                 // /var/www/simplemvc.ru
 define('CORE', dirname(__DIR__).'/vendor/core');   // "/var/www/simplemvc.ru/vendor/core"
 define('ROOT', dirname(__DIR__));                  // "/var/www/simplemvc.ru"
 define('APP', dirname(__DIR__).'/app');            // "/var/www/simplemvc.ru/app"
+define('LIBS', dirname(__DIR__).'/core/libs');
+define('CACHE', dirname(__DIR__).'/temp/cache');
+
 
 require_once "../vendor/autoload.php";
+require_once "../config/config_db.php";
 
 spl_autoload_register(function ($class){
     $file = ROOT.'/'. str_replace('\\', '/', $class).'.php';
@@ -23,6 +27,7 @@ spl_autoload_register(function ($class){
     }
 });
 
+new \app\core\App();
 
 Router::addRoutes('^page/(?P<action>[a-z-]+)/(?P<alias>[a-z-]+)$', ['controller'=> 'page']);
 Router::addRoutes('^page/(?P<alias>[a-z-]+)$', ['controller'=> 'page', 'action' => 'view']);

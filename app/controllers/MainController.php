@@ -2,8 +2,12 @@
 
 namespace app\controllers;
 
+use app\core\App;
 use app\core\base\Controller;
 use app\models\Main;
+use RedBeanPHP\R;
+
+//use R;
 
 class MainController extends Controller
 {
@@ -11,20 +15,29 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        $model = new Main();
-        $posts = $model->findAll();
+        $posts = App::$app->cache->get('posts');
+//        dump($posts);
+        if(!$posts){
+            dump('non');
+            $posts = R::findAll('posts');
+            App::$app->cache->set('posts', $posts, 3600*24);
+        }
 
         $title = 'PAGE TITLE';
-        $this->set(compact('title', 'posts'));
+        $category = R::findOne('category', 'id = ?',[1]);
+        $menu = R::findAll('category');
+        $this->set(compact('title', 'posts', 'menu'));
 
         $this->view = 'myIndexView';
     }
 
 
     public function showAction(){
-        $model = new Main();
-        $post = $model->findOne(2);
-        dd($post);
+        $post = $this->app->main->findOne('posts', 1);
+        App::$app->cache->set('post', $post);
+
+//        $post = $model->findOne('posts', 1);
+        $title = 'Показать одну запись - (showAction)';
         $this->set(compact('title','post'));
     }
 

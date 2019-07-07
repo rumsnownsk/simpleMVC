@@ -2,6 +2,8 @@
 
 namespace app\core\base;
 
+use app\core\Registry;
+
 abstract class Controller
 {
     public $pathToView = [];
@@ -30,11 +32,14 @@ abstract class Controller
      */
     public $vars = array();
 
+    public $app;
+
 
     public function __construct($route)
     {
         $this->route = $route;
         $this->view = $route['action'];
+        $this->app = Registry::instance();
     }
 
     public function getView()
