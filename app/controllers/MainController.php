@@ -15,20 +15,22 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        $posts = App::$app->cache->get('posts');
-//        dump($posts);
-        if(!$posts){
-            dump('non');
-            $posts = R::findAll('posts');
-            App::$app->cache->set('posts', $posts, 3600*24);
-        }
-
-        $title = 'PAGE TITLE';
-        $category = R::findOne('category', 'id = ?',[1]);
-        $menu = R::findAll('category');
-        $this->set(compact('title', 'posts', 'menu'));
-
         $this->view = 'myIndexView';
+
+//        $posts = App::$app->cache->get('posts');
+//        dump($posts);
+//        if(!$posts){
+//            dump('non');
+//            $posts = R::findAll('posts');
+//            App::$app->cache->set('posts', $posts, 3600*24);
+//        }
+        $posts = R::findAll('posts');
+        $title = 'MAIN page';
+        $menu = R::findAll('category');
+        $this->setMeta('Main Page', 'mydesc', 'mykeywords');
+        $this->set(compact('title', 'posts', 'menu'));
+//        dd($this->vars);
+
     }
 
 
@@ -71,8 +73,15 @@ class MainController extends Controller
 
     public function ajaxAction()
     {
-        echo 1234123;
-        $this->layout = false;
+//        $this->layout = false;
+
+        if ($this->isAjax()){
+            $model = new Main();
+            $post = R::findOne('posts', "id = {$_POST['id']}");
+            $this->loadView('_test', compact('post'));
+            exit;
+        }
+        echo '404';
     }
 
 

@@ -3,6 +3,7 @@
 <br>
 
 <div class="container">
+    <button class="btn btn-default" id="send">ajax кнопка</button>
     <ul class="nav nav-pills">
         <?php foreach ($menu as $item) : ?>
             <li><a href="category/<?= $item->id ?>"><?= $item->title ?></a></li>
@@ -28,3 +29,22 @@
 
     <?php endif; ?>
 </div>
+
+<script src="/js/test.js"></script>
+<script>
+    $(function () {
+        $('#send').click(function () {
+            $.ajax({
+                url: '/main/ajax',
+                type: 'post',
+                data: {'id': 2},
+                success: function (res) {
+                    console.log(res)
+                },
+                error: function () {
+                    alert('ERROR AJAX')
+                }
+            })
+        })
+    })
+</script>

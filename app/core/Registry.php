@@ -4,9 +4,9 @@ namespace app\core;
 
 class Registry {
 
-    public static $objects = [];
+    use TSingleton;
 
-    protected static $instance;
+    public static $objects = [];
 
     protected function __construct()
     {
@@ -15,13 +15,6 @@ class Registry {
         foreach ($config['components'] as $name => $component) {
             self::$objects[$name] = new $component;
         }
-    }
-
-    public static function instance(){
-        if (self::$instance === null){
-            self::$instance = new self;
-        }
-        return self::$instance;
     }
 
     public function __get($name)

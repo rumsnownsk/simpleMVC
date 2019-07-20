@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css">
 
-    <title>Hello, world!</title>
+    <title><?= $title ?></title>
 </head>
 <body>
 <h1>Hello, world!</h1>
