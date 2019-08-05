@@ -77,6 +77,11 @@ class MainController extends Controller
 
         if ($this->isAjax()){
             $model = new Main();
+//            $data = [
+//                'answer' => 'ответ с сервера',
+//                'code' => 200
+//            ];
+//            echo json_encode($data);
             $post = R::findOne('posts', "id = {$_POST['id']}");
             $this->loadView('_test', compact('post'));
             exit;

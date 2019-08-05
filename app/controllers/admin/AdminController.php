@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\admin;
 
 use app\core\base\Controller;
 
@@ -8,7 +8,7 @@ class AdminController extends Controller
 {
     public function indexAction()
     {
-//        dd('test admin');
-        $this->layout = "admin/defaultAdmin";
+        echo __METHOD__;
+//        $this->layout = "admin/defaultAdmin";
     }
 }

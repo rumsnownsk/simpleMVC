@@ -2,6 +2,8 @@
 
 namespace app\core;
 
+use Exception;
+
 class Router
 {
 
@@ -42,6 +44,13 @@ class Router
                     $route['action'] = 'index';
                 }
 
+                // prefix for admin controllers
+                if (!isset($route['prefix'])){
+                    $route['prefix'] = '';
+                } else {
+                    $route['prefix'] .= '\\';
+                }
+
                 self::$route = $route;
 
                 return true;
@@ -53,6 +62,7 @@ class Router
     /**
      * @param string $url входящий URL
      * @return void
+     * @throws Exception
      */
     public static function dispatch($url)
     {
@@ -60,8 +70,7 @@ class Router
 
         if (Router::matchRoute($url)) {
 
-            $controller = 'app\controllers\\' . self::upperCamelCase(self::$route['controller']);
-
+            $controller = 'app\controllers\\'.self::$route['prefix'] . self::upperCamelCase(self::$route['controller']);
             if (class_exists($controller)) {
                 $cObj = new $controller(self::$route);
                 $action = self::$route['action'] . "Action";
@@ -71,20 +80,16 @@ class Router
                     $cObj->$action();
                     $cObj->getView();
 
-
                 } else {
-                    echo "Экшен: $action у контроллера $controller - не найден";
+                    throw new Exception("Метод $action у контроллера $controller - не найден", 404);
                 }
 
-
             } else {
-                echo "Контроллер $controller не найден";
+                throw new Exception("Контроллер $controller не найден", 404);
             }
 
-
         } else {
-            http_response_code(404);
-            include '../views/errors/404.html';
+            throw new Exception("Страница не найдена", 404);
         };
     }
 

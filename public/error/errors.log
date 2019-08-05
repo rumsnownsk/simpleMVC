@@ -1,0 +1,42 @@
+[2019-07-22 18:24:17]; Текст: Undefined variable: phpinfo | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 84 
+=======================
+[2019-07-22 18:30:52]; Текст: Undefined variable: phpinfo | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 84 
+=======================
+[2019-07-22 18:33:47]; Текст: Undefined variable: phpinfo | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 87 
+=======================
+[2019-07-22 18:39:45]; Текст: Undefined variable: phpinfo | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 103 
+=======================
+[2019-07-22 18:40:42]; Текст: Uncaught TypeError: Argument 1 passed to ErrorHandler::exceptionHandler() must be an instance of Exception, instance of Error given in /var/www/simplemvc.ru/public/error/index.php:64
+Stack trace:
+#0 [internal function]: ErrorHandler->exceptionHandler(Object(Error))
+#1 {main}
+  thrown | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 64 
+=======================
+[2019-07-22 18:42:11]; Текст: Uups, except!!! ))) | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 95 
+=======================
+[2019-07-22 18:43:32]; Текст: Uncaught TypeError: Argument 1 passed to ErrorHandler::exceptionHandler() must be an instance of Exception, instance of Error given in /var/www/simplemvc.ru/public/error/index.php:64
+Stack trace:
+#0 [internal function]: ErrorHandler->exceptionHandler(Object(Error))
+#1 {main}
+  thrown | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 64 
+=======================
+[2019-07-22 18:43:59]; Текст: Uncaught TypeError: Argument 1 passed to ErrorHandler::exceptionHandler() must be an instance of Exception, instance of Error given in /var/www/simplemvc.ru/public/error/index.php:64
+Stack trace:
+#0 [internal function]: ErrorHandler->exceptionHandler(Object(Error))
+#1 {main}
+  thrown | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 64 
+=======================
+[2019-07-22 18:44:36]; Текст: Call to undefined function test() | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 105 
+=======================
+[2019-07-22 18:45:53]; Текст: Uncaught Error: Cannot access protected property Error::$message in /var/www/simplemvc.ru/public/error/index.php:67
+Stack trace:
+#0 [internal function]: ErrorHandler->exceptionHandler(Object(Error))
+#1 {main}
+  thrown | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 67 
+=======================
+[2019-07-22 18:49:01]; Текст: Call to undefined function test() | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 104 
+=======================
+[2019-07-22 18:50:22]; Текст: Uups, except!!! ))) | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 94 
+=======================
+[2019-07-22 18:52:23]; Текст: Uups, except!!! ))) | Файл: /var/www/simplemvc.ru/public/error/index.php | Строка: 97 
+=======================

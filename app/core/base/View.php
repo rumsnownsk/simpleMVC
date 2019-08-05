@@ -37,21 +37,25 @@ class View
         $this->view = $view;
     }
 
+    /**
+     * @param $data
+     * @throws \Exception
+     */
     public function render($data)
     {
-        $file_view = APP . "/views/{$this->route['controller']}/{$this->view}.php";
+        $file_view = APP . "/views/{$this->route['prefix']}{$this->route['controller']}/{$this->view}.php";
 
+//        dd($this->route);
         if (is_array($data)) {
             extract($data);
         }
-//        dd($data);
 
         ob_start();
 
         if (file_exists($file_view)) {
             require $file_view;
         } else {
-            dump("файл ВИДА <b>$file_view</b> - not found ");
+            throw new \Exception("файл ВИДА <b>$file_view</b> - not found ");
         }
 
         $content = $this->getScript(ob_get_clean());
@@ -69,7 +73,8 @@ class View
                 include $file_layout;
 
             } else {
-                dump("файл ШАБЛОНА <b>{$file_layout}</b> - not found ");
+                throw new \Exception("файл ШАБЛОНА <b>{$file_layout}</b> - not found ");
+//                dump("файл ШАБЛОНА <b>{$file_layout}</b> - not found ");
             }
         }
     }
